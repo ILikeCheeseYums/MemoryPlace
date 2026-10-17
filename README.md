@@ -1,96 +1,152 @@
-# 🧭 Street View Navigator
+# 🌸 Immersia
 
-A lightweight, Google Street View–style 3D perspective corridor walker with an **autonomous graph engine**, **360° panorama support**, clean transitions, spatial audio, and an interactive SVG minimap.
+> **AI-Powered Reminiscence Therapy & Immersive Memory Navigation for Dementia Care**
 
-Navigation routes are **self-derived directly from image filenames** using a standardized nomenclature.
-
----
-
-## 🏷️ Nomenclature Specification
-
-Image filenames follow the convention:
-```
-{step}{branch}-{turn}.jpeg
-```
-*(Supports standard image extensions: `.jpeg`, `.jpg`, `.png`, `.webp`, `.avif`)*
-
-### Components:
-1. **`{step}`** *(Integer)*: Sequential distance index / stop number (e.g., `1`, `2`, `3`).
-2. **`{branch}`** *(Letter)*:
-   - **`A`**: Main corridor spine.
-   - **`B`, `C`, etc.**; Alternate side branches / corridors.
-3. **`-{turn}`** *(Direction code)*:
-   - **`-F` (Forward)**: Straight ahead along the corridor (formerly `-N`, which also automatically maps to `-F`).
-   - **`-R` (Right)**: Right turn split connecting from parent node `(step - 1)` to this node.
-   - **`-L` (Left)**: Left turn split connecting from parent node `(step - 1)` to this node.
-
-### Adaptive Directional Arrows:
-Floor chevrons **only appear when their corresponding direction physically exists**:
-- At **`1A-F`** (entrance): Only the **Forward** arrow is displayed (no backward arrow).
-- At **`4A-F`**: **Left** (to `5A-L`) and **Backward** (to `3A-F`) arrows appear.
-- At dead ends (**`5A-L`**): Only the **Backward** arrow appears.
+**Immersia** is an interactive reminiscence therapy platform designed to help individuals living with Alzheimer's disease and dementia reconnect with cherished life moments. By combining **360° spatial panoramas of familiar spaces**, an **AI-driven voice engine cloned after loved ones**, and **ambient generative music**, Immersia creates a safe, comforting, and emotionally grounding environment for cognitive wellness.
 
 ---
 
-## 🌐 360° Panorama Support
+## ✨ Key Features
 
-The engine automatically detects panoramic photos (aspect ratio $\ge 1.8$, 2:1 equirectangular 360s, or wide stitched panoramas such as `5A-L.jpeg`):
-- **Infinite 360° Horizontal Scrolling**: Drag left or right with mouse or touch to smoothly spin around the entire scene with seamless wrapping.
-- **Dynamic 360° Floor Arrow Tracking**: Navigation arrows glide across the floor in exact sync with your viewing angle, pointing toward doors and hallways as you rotate.
-- **Panorama Indicator Badge**: A subtle floating `360° Panorama` badge appears automatically at panoramic stops.
+### 1. 🔀 Two Experience Modes
+- **🚶‍♂️ Interactive Walkthrough (*"Street Viewer"*)**:
+  - Full freedom to explore nostalgic spaces at one's own pace.
+  - Interactive floor chevrons, smart branching corridor engine, and real-time SVG minimap.
+  - Dual rendering modes: **Usual (2D Cylindrical)** with seamless loop wrap, and **3D Orb** powered by Three.js spherical projection.
+  - On-entry memory triggers: stepping into a room prompts the AI loved one to share a warm, context-aware memory.
 
----
-
-## 🖼️ Uncropped Image Display (Fit vs. Fill)
-
-By default, the engine displays **100% uncropped images** using `contain` mode, preserving your photos' original aspect ratio and resolution (whether portrait `3:4`, widescreen `16:9`, or ultrawide panorama `3.2:1`).
-- Press **`C`** or click the **`⤢`** button in the bottom-right toolbar to toggle between:
-  - **Fit (Default)**: Full image visible from edge to edge with zero cropping.
-  - **Fill**: Full-bleed edge-to-edge coverage.
-
----
-
-## 🌟 Adding & Changing Images at Will
-
-You can dynamically add, append, or replace images at any time:
-1. **Direct Add Button**: Click the image `+` button in the top-left toolbar.
-2. **Minimap Footer**: Click the minimap icon (or press `M`), then click **Add Images** or **Reset**.
-3. **Drag & Drop**: Drag images or an entire folder onto the browser window. A visual drop-zone overlay appears automatically.
-4. **Smart Merging**:
-   - Dropping new steps (e.g., `5A-L.jpeg`, `6A-F.jpeg`) **adds** them to the current walkthrough.
-   - Dropping a tour starting from stop `1` automatically loads the new walkthrough.
-   - Clicking **Reset** restores the default corridor.
+- **🎞️ Automated Memory Slideshow with Music**:
+  - Hands-free, low-cognitive-load experience tailored for seniors and clinical sessions.
+  - **Smart Pacing**: Automatically advances to the next scene once narration concludes, or after a gentle 45-second contemplation window.
+  - **Built-in Ambient Music**: Web Audio synthesis presets (*Peaceful Piano*, *Calm Chimes*, *Fireside Strings*), or upload your own cherished family MP3 tracks.
+  - **Live Controls**: Persistent playback bar with linear slide stepper, previous/next controls, and an instant Autoplay toggle.
 
 ---
 
-## 🚀 How to Run
+### 2. 🎙️ Loved One Voice Engine & Memory Grounding
+- **Voice Cloning (ElevenLabs)**: Family members can clone a familiar voice (daughter, son, grandchild, spouse) via ElevenLabs VoiceLab ID to comfort the patient.
+- **Dynamic Memory Generation (Google Gemini / OpenAI)**: Synthesizes gentle, conversational reminiscence scripts that highlight sensory cues (scents, sounds, family laughter).
+- **Graceful Fallbacks**: Works out of the box with built-in browser Web Speech synthesis and curated memories if external API keys are not provided.
+- **Live Avatar & Closed Captions (CC)**: Calming visual companion with real-time audio waveform animations and high-contrast accessible captions.
 
-1. **Directly in Browser**:
-   Open [`index.html`](index.html) in any browser:
+---
+
+### 3. 🧩 Visual Node Graph Editor (Unreal Engine Blueprint Style)
+- Caregivers and family members can visually design custom memory journeys.
+- Connect rooms with intuitive forward, left, right, and return pathways.
+- Assign 360° panoramas or standard widescreen images to specific nodes.
+- Author localized memory prompts, emotional cues, and voice context per room.
+
+---
+
+### 4. 🏡 Pre-loaded Nostalgia Demo Tour
+Includes a five-scene, AI-generated nostalgic family journey:
+1. **The Sunlit Craftsman Porch** (`1A-F.jpeg`): Morning sunlight filtering through maple leaves and geraniums.
+2. **The Fireside Living Room** (`2A-F.jpeg`): Warm embers, vintage books, and favorite armchairs.
+3. **The Hallway of Milestones** (`3A-F.jpeg`): Framed family portraits, graduations, and wedding days.
+4. **The Heirloom Rose Garden** (`4A-F.jpeg`): Pink English roses, lavender bushes, and tranquil songbirds.
+5. **The Country Breakfast Nook** (`5A-F.jpeg`): Freshly baked cinnamon rolls and morning coffee.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: [React 18](https://react.dev/), [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/), [Lucide React Icons](https://lucide.dev/)
+- **3D & 360° Rendering**: [Three.js](https://threejs.org/) via `@react-three/fiber` & HTML5 Canvas / CSS Cylindrical Projection
+- **Audio & Synthesis**: Web Audio API (procedural generative music), HTML5 Audio, Web Speech Synthesis
+- **AI Integrations**: [ElevenLabs API](https://elevenlabs.io/), [Google Gemini API](https://ai.google.dev/), [OpenAI API](https://openai.com/)
+- **Deployment**: [Vercel](https://vercel.com/) with single-page application rewriting (`vercel.json`)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm installed.
+
+### Installation & Run
+
+1. **Clone the repository**:
    ```bash
-   open index.html
+   git clone https://github.com/your-username/immersia.git
+   cd immersia
    ```
 
-2. **Via Local Web Server**:
+2. **Install dependencies**:
    ```bash
-   python3 -m http.server 8080
+   npm install
    ```
-   Navigate to `http://localhost:8080`.
+
+3. **Start the development server**:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:5174](http://localhost:5174) in your browser.
+
+4. **Build for production**:
+   ```bash
+   npm run build
+   ```
 
 ---
 
-## ⌨️ Controls & Shortcuts
+## ⚙️ Configuration & API Keys
 
-| Action | Shortcut / Control |
+Immersia functions immediately without any external keys using browser-native text-to-speech and Web Audio synth melodies.
+
+To enable personalized voice cloning and dynamic memory generation:
+1. Click the **"Voice & Memory Settings"** (gear icon) on the loved one avatar or in the top navigation bar.
+2. Enter your API credentials:
+   - **ElevenLabs API Key & Voice ID**: For realistic family member voice cloning.
+   - **OpenAI or Gemini API Key**: For real-time conversational memory synthesis.
+3. Keys are stored safely in browser `localStorage` and never transmitted to external servers other than the official AI providers.
+
+---
+
+## ⌨️ Navigation Controls & Shortcuts
+
+| Action | Control / Shortcut |
 |:---|:---|
 | **Step Forward** | `↑` Arrow, `W`, or click forward chevron |
 | **Step Backward** | `↓` Arrow, `S`, or click backward chevron |
-| **Turn Right** | `→` Arrow, `D`, or click right chevron |
-| **Turn Left** | `←` Arrow, `A`, or click left chevron |
-| **Look Around / 360° Pan** | Mouse drag or touch swipe horizontally & vertically |
-| **Add / Change Images** | Top-left image button, or drop files |
-| **Toggle Fit / Fill (No Crop)** | `C` key, or bottom-right `⤢` button |
-| **Zoom In / Out** | Scroll wheel, or bottom-right `+` / `-` buttons |
-| **Reset View** | `0` or `Escape`, or bottom-right reset button |
-| **Toggle Minimap** | `M` key, or click top-left map icon |
-| **Fullscreen** | Top-right `⛶` button |
+| **Turn Left / Right** | `←` / `→` Arrows, `A` / `D`, or click directional chevrons |
+| **360° Look Around** | Click and drag mouse, or touch swipe across the scene |
+| **Toggle Autoplay** | Click the Play/Pause button in the bottom slideshow bar |
+| **Toggle 360° Mode** | Click the "Usual" / "3D Orb" toggle button |
+| **Toggle Fit / Fill** | Press `C` or click the `⤢` button |
+| **Zoom In / Out** | Mouse wheel scroll, or `+` / `-` buttons |
+| **Toggle Minimap** | Press `M` or click the map icon |
+| **Open Blueprint Editor** | Click the "Blueprint Graph" button in the navigation header |
+
+---
+
+## 🚢 Deployment (Vercel)
+
+The repository is configured for one-click deployment on [Vercel](https://vercel.com/):
+
+```bash
+# Using Vercel CLI
+npm install -g vercel
+vercel
+```
+
+A [`vercel.json`](vercel.json) file is pre-configured with SPA route rewrites:
+```json
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
+```
+
+---
+
+## 🤝 Clinical Purpose & Reminiscence Therapy
+
+Reminiscence therapy uses tangible sensory prompts (photographs, familiar spaces, familiar voices, and music) to evoke positive memories and emotions from the past. Research shows that engaging in reminiscence can:
+- **Reduce anxiety and depressive symptoms** in people with dementia.
+- **Stimulate neuro-connections** associated with long-term episodic memory.
+- **Foster meaningful communication** between patients, caregivers, and family members.
+
+*Immersia is built with compassion to preserve dignity, memory, and personal identity.*
