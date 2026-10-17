@@ -131,7 +131,7 @@ export default function App() {
   return (
     <div 
       {...getRootProps()} 
-      className={`min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col items-center justify-center p-6 md:p-12 relative overflow-hidden transition-colors ${
+      className={`h-screen w-full bg-[#f8fafc] text-slate-800 flex flex-col items-center py-10 md:py-14 px-6 md:px-12 relative overflow-y-auto overflow-x-hidden transition-colors ${
         isDragActive ? 'bg-blue-50/70' : ''
       }`}
     >
@@ -145,10 +145,12 @@ export default function App() {
         className="hidden"
       />
       
-      {/* Warm Ambient Sunlit Glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-rose-200/30 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[550px] h-[550px] bg-amber-200/30 rounded-full blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/3 w-[600px] h-[400px] bg-sky-200/30 rounded-full blur-[140px] pointer-events-none" />
+      {/* Warm Ambient Sunlit Glows - isolated in fixed background layer so they never stretch scroll height */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none -z-0">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-rose-200/30 rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 right-1/4 w-[550px] h-[550px] bg-amber-200/30 rounded-full blur-[130px]" />
+        <div className="absolute bottom-0 left-1/3 w-[600px] h-[400px] bg-sky-200/30 rounded-full blur-[140px]" />
+      </div>
 
       {/* Delicate background dot pattern */}
       <div 
