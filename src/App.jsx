@@ -203,6 +203,48 @@ export default function App() {
         </div>
 
         {/* ════════════════════════════════════════
+            PHILOSOPHY & CAREGIVER GUIDE
+            ════════════════════════════════════════ */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+          {/* Card 1: Our Mission */}
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-7 border border-slate-200/90 shadow-[0_8px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(244,63,94,0.06)] hover:border-rose-200 transition-all flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-50 text-rose-700 text-xs font-bold border border-rose-200/70">
+                <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+                <span>The Philosophy</span>
+              </div>
+              <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">
+                Our Mission
+              </h2>
+              <p className="text-sm md:text-base text-slate-600 leading-relaxed font-normal">
+                Dementia isolates. We provide a spatial cognitive prosthetic that uses visual reminiscence and familiar voices to ground patients, reduce anxiety, and restore a sense of identity.
+              </p>
+            </div>
+          </div>
+
+          {/* Card 2: Caregiver Guide */}
+          <div className="bg-white/80 backdrop-blur-md rounded-3xl p-6 md:p-7 border border-slate-200/90 shadow-[0_8px_25px_rgba(0,0,0,0.03)] hover:shadow-[0_12px_30px_rgba(59,130,246,0.06)] hover:border-blue-200 transition-all flex flex-col justify-between">
+            <div className="space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200/70">
+                <Compass className="w-3.5 h-3.5 text-blue-600" />
+                <span>Caregiver Guide</span>
+              </div>
+              <h2 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight">
+                How to Use
+              </h2>
+              <div className="text-sm md:text-base text-slate-600 leading-relaxed font-normal space-y-2">
+                <p>
+                  <strong className="text-slate-800 font-semibold">1. Image Slideshow:</strong> Launch to cycle through nostalgic photos paired with the patient&apos;s favorite calming music.
+                </p>
+                <p>
+                  <strong className="text-slate-800 font-semibold">2. Video Generation:</strong> Watch spatial memory videos guided and narrated by the cloned voices of loved ones.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ════════════════════════════════════════
             THE 2 CORE MODES (Light-Themed Cards)
             ════════════════════════════════════════ */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
