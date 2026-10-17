@@ -189,7 +189,7 @@ export default function App() {
           </div>
 
           <h1 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-            Immersia Memory Engine
+            Immersia A Memory Palace
           </h1>
           
           <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-normal">
