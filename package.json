@@ -1,8 +1,9 @@
 {
-  "name": "clueless",
+  "name": "immersia",
   "version": "1.0.0",
-  "description": "A lightweight, Google Street View–style 3D perspective corridor walker with an **autonomous graph engine**, **360° panorama support**, clean transitions, spatial audio, and an interactive SVG minimap.",
-  "main": "app.js",
+  "private": true,
+  "description": "Immersia — Dementia Reminiscence Therapy Platform & AI Loved One Voice Engine",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
